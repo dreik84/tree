@@ -1,11 +1,19 @@
 package org.example;
 
-public class Node {
+class Node {
 
     public int iData;
     public double dData;
     public Node leftChild;
     public Node rightChild;
+
+    public Node() {
+    }
+
+    public Node(int iData, double dData) {
+        this.iData = iData;
+        this.dData = dData;
+    }
 
     public void displayNode() {
         System.out.print('{');
