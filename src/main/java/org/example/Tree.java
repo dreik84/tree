@@ -121,6 +121,48 @@ class Tree {
         return successor;
     }
 
+    public void traverse(int traverseType) {
+
+        switch (traverseType) {
+            case 1:
+                System.out.print("\nPreorder traversal: ");
+                preOrder(root);
+                break;
+            case 2:
+                System.out.print("\nInorder traversal: ");
+                inOrder(root);
+                break;
+            case 3:
+                System.out.print("\nPostorder traversal: ");
+                postOrder(root);
+                break;
+        }
+        System.out.println();
+    }
+
+    private void preOrder(Node localRoot) {
+        if (localRoot != null) {
+            System.out.print(localRoot.iData + " ");
+            preOrder(localRoot.leftChild);
+            preOrder(localRoot.rightChild);
+        }
+    }
+
+    private void inOrder(Node localRoot) {
+        if (localRoot != null) {
+            inOrder(localRoot.leftChild);
+            System.out.print(localRoot.iData + " ");
+            inOrder(localRoot.rightChild);
+        }
+    }
+
+    private void postOrder(Node localRoot) {
+        if (localRoot != null) {
+            preOrder(localRoot.leftChild);
+            preOrder(localRoot.rightChild);
+            System.out.print(localRoot.iData + " ");
+        }
+    }
 }
 
 
