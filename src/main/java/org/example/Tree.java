@@ -2,6 +2,8 @@ package org.example;
 
 // Двоичное дерево
 
+import java.util.Stack;
+
 class Tree {
 
     private Node root;
@@ -161,6 +163,55 @@ class Tree {
             preOrder(localRoot.leftChild);
             preOrder(localRoot.rightChild);
             System.out.print(localRoot.iData + " ");
+        }
+    }
+
+    public void displayTree() {
+        Stack globalStack = new Stack();
+        globalStack.push(root);
+        int nBlanks = 32;
+        boolean isRowEmpty = false;
+
+        System.out.println(".........................................");
+
+        while (isRowEmpty == false) {
+            Stack localStack = new Stack();
+            isRowEmpty = true;
+
+            for (int i = 0; i < nBlanks; i++) {
+                System.out.println(' ');
+            }
+
+            while (!globalStack.isEmpty()) {
+                Node temp = (Node) globalStack.pop();
+
+                if (temp != null) {
+                    System.out.print(temp.iData);
+                    localStack.push(temp.leftChild);
+                    localStack.push(temp.rightChild);
+
+                    if (temp.leftChild != null || temp.rightChild != null) {
+                        isRowEmpty = false;
+                    }
+                } else {
+                    System.out.print("--");
+                    localStack.push(null);
+                    localStack.push(null);
+                }
+
+                for (int i = 0; i < nBlanks * 2 - 2; i++) {
+                    System.out.print(' ');
+                }
+
+                System.out.println();
+
+                nBlanks /= 2;
+
+                while (!localStack.isEmpty()) {
+                    globalStack.push(localStack.pop());
+                }
+                System.out.println(".........................................");
+            }
         }
     }
 }
