@@ -172,17 +172,17 @@ class Tree {
         int nBlanks = 32;
         boolean isRowEmpty = false;
 
-        System.out.println(".........................................");
+        System.out.println(".".repeat(32));
 
         while (isRowEmpty == false) {
             Stack localStack = new Stack();
             isRowEmpty = true;
 
             for (int i = 0; i < nBlanks; i++) {
-                System.out.println(' ');
+                System.out.print(' ');
             }
 
-            while (!globalStack.isEmpty()) {
+            while (globalStack.isEmpty() == false) {
                 Node temp = (Node) globalStack.pop();
 
                 if (temp != null) {
@@ -207,10 +207,10 @@ class Tree {
 
                 nBlanks /= 2;
 
-                while (!localStack.isEmpty()) {
+                while (localStack.isEmpty() == false) {
                     globalStack.push(localStack.pop());
                 }
-                System.out.println(".........................................");
+                System.out.println(".".repeat(32));
             }
         }
     }
