@@ -46,6 +46,19 @@ public class App {
                         found.displayNode();
                         System.out.println();
                     }
+                    break;
+                case 'd':
+                    System.out.print("Enter value to delete: ");
+                    value = getInt();
+                    theTree.delete(value);
+                    break;
+                case 't':
+                    System.out.print("Enter traverse type (1, 2, 3): ");
+                    value = getInt();
+                    theTree.traverse(value);
+                    break;
+                default:
+                    System.out.println("Invalid value");
             }
         }
     }
